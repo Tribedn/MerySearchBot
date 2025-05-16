@@ -92,7 +92,7 @@ async def audio_selection(callback: CallbackQuery):
     await callback.message.answer_audio(
         audio=FSInputFile(mp3_path),
         title=title,
-        caption="🔗 Завантажуй аудіо тут 👉 @MeryLoadBot"
+        caption="🔗 Завантажуй аудіо тут 👉 @MerySearchBot"
     )
 
     os.remove(mp3_path)
