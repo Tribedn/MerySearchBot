@@ -59,9 +59,16 @@ def download_audio_yt_dlp(url: str) -> Tuple[str, str]:
     with YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
         title = info.get('title', 'audio')
-        filename = ydl.prepare_filename(info)
-        mp3_filename = os.path.splitext(filename)[0] + '.mp3'
+
+        # Назва файлу без розширення
+        downloaded_basename = ydl.prepare_filename(info)
+        mp3_filename = os.path.splitext(downloaded_basename)[0] + '.mp3'
+
+        if not os.path.exists(mp3_filename):
+            raise FileNotFoundError(f"MP3 файл не знайдено: {mp3_filename}")
+
         return mp3_filename, title
+
 
 @dp.callback_query(F.data.startswith("select_"))
 async def audio_selection(callback: CallbackQuery):
@@ -84,7 +91,8 @@ async def audio_selection(callback: CallbackQuery):
 
     await callback.message.answer_audio(
         audio=FSInputFile(mp3_path),
-        title=title
+        title=title,
+        caption="🔗 Завантажуй аудіо тут 👉 @MeryLoadBot"
     )
 
     os.remove(mp3_path)

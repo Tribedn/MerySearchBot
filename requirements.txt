@@ -1,5 +1,6 @@
 pydub
-aiogram
-yt-dlp==2024.10.22
-ffmpeg==1.4
 pytube
+aiogram
+pytubefix
+yt-dlp==2024.10.22
+ffmpeg
