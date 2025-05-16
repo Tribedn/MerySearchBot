@@ -17,6 +17,6 @@ It searches YouTube, finds the best match, downloads the audio, and sends it to 
 ```bash
 git clone https://github.com/Tribedn/MerySearchBot
 cd MerySearchBot
-
+```
 ```bash
 python3 main.py
