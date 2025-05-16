@@ -5,6 +5,7 @@ from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, C
 from yt_dlp import YoutubeDL
 from pytube import Search
 from config import BOT_TOKEN  # Твій токен бота
+from typing import Tuple
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
@@ -40,7 +41,7 @@ async def search_youtube(message: Message):
 
     await message.answer("🔍 Вибери пісню зі списку:", reply_markup=keyboard)
 
-def download_audio_yt_dlp(url: str) -> tuple[str, str]:
+def download_audio_yt_dlp(url: str) -> Tuple[str, str]:
     os.makedirs('downloads', exist_ok=True)
     ydl_opts = {
         'format': 'bestaudio/best',

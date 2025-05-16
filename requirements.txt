@@ -1,5 +1,5 @@
-pydub==0.25.1
-aiogram==3.20.0.post0
-pytubefix==8.13.1
-yt-dlp==2025.4.30
+pydub
+aiogram
+yt-dlp==2024.10.22
 ffmpeg==1.4
+pytube
