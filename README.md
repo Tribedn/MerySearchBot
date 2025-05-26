@@ -35,7 +35,7 @@ Check that Python 3.9 is installed:
 ```bash
 python3.9 --version
 ```
-##🧪 Create a virtual environment
+🧪 Create a virtual environment
 
 Navigate to your bot's directory and run:
 ```bash
