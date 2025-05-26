@@ -11,6 +11,7 @@ bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 search_cache = {}
+audio_cache = {}
 
 @dp.message(F.text == "/start")
 async def start_handler(message: Message):
@@ -81,9 +82,16 @@ async def audio_selection(callback: CallbackQuery):
         return
 
     video = videos[index]
+    video_id = video.video_id
+
     await callback.message.edit_text(f"🎧 Завантажую: {video.title}")
 
-    mp3_path, title = await asyncio.to_thread(download_audio_yt_dlp, video.watch_url)
+    if video_id in audio_cache and os.path.exists(audio_cache[video_id]):
+        mp3_path = audio_cache[video_id]
+        title = video.title
+    else:
+        mp3_path, title = await asyncio.to_thread(download_audio_yt_dlp, video.watch_url)
+        audio_cache[video_id] = mp3_path
 
     if not os.path.exists(mp3_path):
         await callback.message.answer("❌ Помилка при завантаженні.")
@@ -95,7 +103,6 @@ async def audio_selection(callback: CallbackQuery):
         caption="🔗 Завантажуй аудіо тут 👉 @MerySearchBot"
     )
 
-    os.remove(mp3_path)
 
 async def main():
     await dp.start_polling(bot)
