@@ -22,7 +22,7 @@ cd MerySearchBot
 python3 main.py
 ```
 
-##If you going to deploying Bot on Google Cloud/VPS with Ubuntu 20.04 LTS(With Python 3.9):
+##  If you going to deploying Bot on Google Cloud/VPS with Ubuntu 20.04 LTS(With Python 3.9):
 
 ```bash
 sudo apt update
@@ -35,7 +35,7 @@ Check that Python 3.9 is installed:
 ```bash
 python3.9 --version
 ```
-🧪 Create a virtual environment
+## 🧪 Create a virtual environment
 
 Navigate to your bot's directory and run:
 ```bash
